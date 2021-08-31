@@ -29,6 +29,9 @@
     <!--Importante sustituir CLIENT_ID generando en su cuenta de paypal sandbox-->
     <script src="https://www.paypal.com/sdk/js?client-id=CLIENT_ID">
     </script>
+    <footer>
+        <a href="https://github.com/gab98fra">Desarrollado por Gabriel</a> 
+    </footer>
     <script>
       paypal.Buttons({
         createOrder: function(data, actions) {
@@ -67,8 +70,5 @@
             }
         }).render('#paypal-button-container');
     </script>
-    <footer>
-        <a href="https://github.com/gab98fra">Desarrollador por Gabriel</a> 
-     </footer>
 </body>
 </html>
