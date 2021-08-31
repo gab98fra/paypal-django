@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integración de paypal by Gabriel</title>
+    <meta name="keywords" content="Django, paypal, python"/>
+    <meta name="description" content="Integración de paypal con django."/>
+    <meta name="author" content="https://github.com/gab98fra" />
+    <script>
+      function token(name) {
+          var cookieValue = null;
+          if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }}}
+          return cookieValue;
+        }
+        var csrftoken = token('csrftoken');
+    </script>
+</head>
+<body>
+    <div id="paypal-button-container"></div>
+    <!--Importante sustituir CLIENT_ID generando en su cuenta de paypal sandbox-->
+    <script src="https://www.paypal.com/sdk/js?client-id=CLIENT_ID">
+    </script>
+    <script>
+      paypal.Buttons({
+        createOrder: function(data, actions) {
+          let value="2";
+          let code="USD"
+          // Datos de la compra
+          return actions.order.create({
+            purchase_units: [{
+              amount: {
+                currency_code: code,
+                value: value
+              }
+            }]
+          });
+        },
+        onApprove: function(data) {
+          return fetch('/pay/', {
+            method: 'POST',
+            headers: {
+              'content-type': 'application/json',
+              'X-CSRFToken': csrftoken,
+            },
+            body: JSON.stringify({
+                  orderID: data.orderID
+            })
+            }).then(function(res) {
+                  return res.json();
+            }).then(function(details) {
+              if(details.status){
+                alert("Se realizó correctamente la compra");
+              }
+              else{
+                alert("No se concreto la compra");
+              }
+            })
+            }
+        }).render('#paypal-button-container');
+    </script>
+    <footer>
+        <a href="https://github.com/gab98fra">Desarrollador por Gabriel</a> 
+     </footer>
+</body>
+</html>
