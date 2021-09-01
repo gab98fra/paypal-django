@@ -25,7 +25,11 @@ class PayView(View):
     def post(self, request, *args, **kwargs):
         
         "IMPORTANTE crear un producto en el modelo ProductModel"
-        product=ProductModel.objects.get(id=1)
+        try:
+            product=ProductModel.objects.get(id=1)
+        except:
+            print("IMPORTANTE crear un producto en el modelo ProductModel")
+            
         #Datos de la orden generada
         data=json.loads(request.body)
         order_id=data["orderID"]
