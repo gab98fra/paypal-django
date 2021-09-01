@@ -1,13 +1,14 @@
 # paypal-django
 Integración de paypal con django y registro de transacción en DBA
 
-# Observaciones
+# Recomendaciones
 **Se recomienda seguir los siguientes pasos:**
 
 1. *Instalar las siguientes librerías:* <br>
 
-      pip install Django <br>
-      pip install paypalrestsdk 
+  ``` [language]
+  pip install Django, paypalrestsdk
+  ```
 
 2. *Crear cuenta Sandbox-Paypal:*<br>
 
@@ -28,6 +29,7 @@ Integración de paypal con django y registro de transacción en DBA
    self.client_id="client_id"
    self.client_secret="client_secre
 ```
+* Nota. Crear al menos un producto, implementar login o al menos estar logeado en admin en caso contrario es posible que le arroge un error por csrf token.
 
 # PayPal
 
