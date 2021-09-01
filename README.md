@@ -9,7 +9,7 @@ Integración de paypal con django y registro de transacción en DBA
       pip install Django <br>
       pip install paypalrestsdk 
 
-2. *Crear un cuenta Sandbox-Paypal:*<br>
+2. *Crear cuenta Sandbox-Paypal:*<br>
 
       [Crear cuenta](https://developer.paypal.com/docs/api/rest-sdks/ "Link")
   
