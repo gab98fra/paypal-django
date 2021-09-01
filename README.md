@@ -29,7 +29,7 @@ Integración de paypal con django y registro de transacción en DBA
    self.client_id="client_id"
    self.client_secret="client_secre
 ```
-* Nota. Crear al menos un producto, implementar login o al menos estar logeado en admin en caso contrario es posible que le arroge un error por csrf token.
+* Nota. Crear al menos un producto, implementar login o al menos estar logeado en admin en caso contrario es posible que le arroje un error por csrf token.
 
 # PayPal
 
